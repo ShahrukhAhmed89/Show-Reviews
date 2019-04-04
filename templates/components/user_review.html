@@ -1,0 +1,112 @@
+<div id="js-data-hub" 
+    data-review-id="{{user_review.id}}" 
+    data-user-rating="{{user_review.rating}}"  
+    data-show-name="{{show.title}}" 
+    data-show-id="{{show.id}}" 
+    data-user-rating="{{user_review.rating}}"
+    >
+</div>
+
+{% if user.is_authenticated %}
+
+<div class="review__alert-text"><strong>Info!</strong> Make sure you click the <strong>submit button</strong> to save your rating and review.</div>
+<div class="review__logged-user">
+    <div class="user__profile">
+        <div class="profile-icon">
+            {{ user.username | slice:"1" }}
+        </div>
+        <!-- {% if user_review.chingu.avatar %} 
+            <a href=""><img src="{{ user_review.chingu.avatar.url }"></a>
+        {% else %}
+            <a href=""><img src="/static/girl.png"></a>
+        {% endif %} -->
+    </div>
+    <div class="logged-user__form" id="js-user-review">
+        <span class="user-name"><a href="">Me</a></span>
+        <div class="user__submitted-review" id="" >
+            <form id="user_review_form">
+                <fieldset class="rating" id="rating_box">
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label class="full-star" for="star5" style="left:124px" title="5 stars"></label>
+                    
+                    <input type="radio" id="star4half" name="rating" value="4.5" />
+                    <label class="half-star" for="star4half" style="left:124px" title="4 and half stars"></label>
+                    
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label class="full-star" for="star4" style="left:93px" title="4 stars"></label>
+                    
+                    <input type="radio" id="star3half" name="rating" value="3.5" />
+                    <label class="half-star" for="star3half" style="left:93px" title="3 and half stars"></label>
+                    
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label class="full-star" for="star3" style="left:62px" title="3 stars"></label>
+                    
+                    <input type="radio" id="star2half" name="rating" value="2.5" />
+                    <label class="half-star" for="star2half" style="left:62px" title="2 and half stars"></label>
+                    
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label class="full-star" for="star2" style="left:31px" title="2 stars"></label>
+                    
+                    <input type="radio" id="star1half" name="rating" value="1.5" />
+                    <label class="half-star" for="star1half" style="left:31px" title="1 and half stars"></label>
+                     
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label class="full-star" for="star1" style="left:0" title="1 stars"></label>
+                    
+                    <input type="radio" id="starhalf" name="rating" value=".5" />
+                    <label class="half-star" for="starhalf" style="left:0" title="half stars"></label>
+                </fieldset>
+            </form>
+            {% if user_review %}
+                {% if user_review.post %}
+                    <div class="logged-user__review-text" id="review_text" >
+                        {{ user_review.post | linebreaksbr }}
+                    </div>
+                {% else %}
+                    <div class="logged-user__review-text" id="review_text" placeholder="You can add a review if you like..." ></div>
+                {% endif %}
+                <div class="logged-user__btn">
+                    <div class="logged-user__like">
+                        <div class="like__btn like__btn--logged-user "></div>
+                        <div class="like__count" id="user-like-count"> {{ user_review.user_likes | length }} </div>
+                    </div>
+                    <div class="btn-set">
+                        <button id="btn_submit" class="btn btn-submit hide">Submit</button>
+                        <button id="btn_save"   class="btn btn-submit hide">Submit</button>
+                        <button id="btn_editor" class="btn btn-edit">Edit</button> 
+                        <button id="btn_delete" class="btn-delete">Delete</button>
+                    </div>   
+                </div>
+            {% else %}
+            <div class="logged-user__review-text" id="review_text" contenteditable="true"  placeholder="You can add a review if you like..."></div>
+            <div class="logged-user__btn">
+                <div class="logged-user__like">
+                    <div class="like__btn like__btn--logged-user"></div>
+                    <div class="like__count" id="user-like-count">{{ user_review.user_likes | length }} </div>
+                </div>	
+                <div class="btn-set">
+                    <button id="btn_submit" class="btn btn-submit">Submit</button>
+                    <button id="btn_save"   class="btn btn-submit hide">Submit</button>
+                    <button id="btn_editor" class="btn btn-edit hide">Edit</button>
+                    <button id="btn_delete" class="btn-delete hide">Delete</button>
+                </div>
+                
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="alert-wrapper" id="delete-prompt">
+    <div class="alert__message">
+        <div class="alert__text">Are you sure you want to delete the review?</div>
+        <div class="alert__button">
+            <button class="alert__cancel" onclick="cancelDelete()">Cancel</button>
+            <button class="alert__delete" onclick="deleteReview()">Delete</button>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<button class="review__login-btn" onclick="opensignin()" id="js-user-review">Login to review the show</button>
+
+{% endif %}

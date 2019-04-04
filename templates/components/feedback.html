@@ -1,0 +1,80 @@
+<div class="feedback-wrapper hide">
+	<div class="feedback-container">
+		<form class="feedback-form">
+			<div class="closebox" onclick="closefeedback()">close</div>
+			<h2>Hey Chingu, send us your feedback</h2>
+			<select>
+				<option class="opt" value="Can you add this show">Can you add this show</option>
+				<option value="Can you add this feature">Can you add this feature</option>
+				<option value="There is a problem with the website">There is a problem with the website</option>
+				<option value="Other Feedback">Other Feedback</option>
+			</select>
+			<textarea rows="5" cols="33" placeholder="Tell us more.." required></textarea>
+			<input type="submit" id="feedback_submit" name="submit">
+		</form>
+		<div class="form-success">
+			<div>
+				<svg class="tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="tick--circle" cx="26" cy="26" r="25" fill="none"/><path class="tick--line" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+			</div>
+			<div class="success-text">Thankyou for taking the time to help us improve.</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.getElementById("feedback_submit").addEventListener('click', formSubmit)
+
+	function formSubmit(e){
+		e.preventDefault()
+		let formElement = e.target.parentElement,
+			form = formElement.elements,
+			successElement = document.getElementsByClassName("form-success")[0],
+			problem = form.item(0).value,
+			text = form.item(1).value;
+    	data = {
+			problem, 
+			text
+		};
+		fetch('http://localhost:8000/form/user_feedback', {
+			method: 'post',
+			credentials: 'same-origin',
+			headers: {
+				"X-CSRFToken" : getcsrf('csrftoken'),
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			body: JSON.stringify(data)
+		}).then(function(response){
+			response.json().then(function(data){
+			formElement.style.display = 'none'
+			successElement.style.display = 'block'
+				
+				
+				setTimeout(fade,1000)
+			})
+			
+
+			
+		}).catch(function(e){
+			console.log(e)
+		})
+
+}
+function fade(){
+	document.getElementsByClassName("feedback-wrapper")[0].classList.add("fade")
+	setTimeout(hide,1000)
+}
+function hide(){
+	document.getElementsByClassName("feedback-wrapper")[0].classList.remove("fade")
+	document.getElementsByClassName("feedback-wrapper")[0].classList.toggle("hide")
+
+	form = document.getElementsByClassName("feedback-form")[0]
+	form.elements[0].value = "Can you add this show"
+	form.elements[1].value = ""
+
+	document.getElementsByClassName("form-success")[0].style.display = 'none'
+	document.getElementsByClassName("feedback-form")[0].style.display = 'block'
+}
+
+
+</script>

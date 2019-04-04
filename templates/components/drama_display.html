@@ -1,0 +1,195 @@
+<div class="meta-container">
+    <div class="meta-poster">
+        <img src="{{show.image_landscape.url}}">
+    </div>
+    <div class="meta-info">
+        <div class="drama-intro">
+            <div class="drama-intro__rating">
+                {% if rating.rating__avg  %}
+                    {{rating.rating__avg}}
+                {% else %}
+                    N/A
+                {% endif %}
+            </div>
+            <h1 class="drama-intro__title">{{show.title}} <span>({{show.release_date|date:'Y'}})</span> </h1>
+            <div class="drama-intro__vote-episode-season">
+                <span>{{count}}</span><span>  Ratings</span>
+                <span>{% if show.tmdb_data %}{{show.tmdb_data.number_of_episodes}}{% endif %}</span><span> Episodes</span>
+            </div>
+        </div>
+        {% if show.tmdb_data %}
+        <div class="drama-info">
+            <ul class="drama-info__header">
+                <li class="info__header__heading info__header__heading--active" id="defaultOpen" show="plot" >Plot</li>
+                <li class="info__header__heading" show="actor-crew">Actor/Crew</li>
+                <li class="info__header__heading" show="genre">Genre</li>
+            </ul>
+            <div class="drama-info__content">
+                <div class="drama-info__plot drama-info--active" id="plot">
+                    <p>{{show.tmdb_data.synopsis}}</p>
+                </div>
+                <div class="drama-info__cast-crew" id="actor-crew">
+                    <div class="cast-crew">
+                        <h2>Actor</h2>
+                        <ul class="drama-info__list">
+                            {% for actor in show.tmdb_data.actors %}
+                            <li>{{actor}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="cast-crew">
+                        <h2>Director</h2>
+                        <ul class="drama-info__list">
+                            {% for director in show.tmdb_data.directors %}
+                            <li>{{director}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="cast-crew">
+                        <h2>Writer</h2>
+                        <ul class="drama-info__list">
+                            {% for writer in show.tmdb_data.writers %}
+                            <li>{{writer}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <ul class="drama-info__genre" id="genre">
+                    {% for genre in show.tmdb_data.genres %}
+                        <li>{{genre}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <div class="drama-info">
+            <ul class="drama-info__header">
+                <li class="info__header__heading info__header__heading--active" id="defaultOpen" show="plot" >Plot</li>
+                <li class="info__header__heading" show="actor-crew">Actor/Crew</li>
+                <li class="info__header__heading" show="genre">Genre</li>
+            </ul>
+            <div class="drama-info__content">
+                <div class="drama-info__plot drama-info--active" id="plot">
+                    <p>{{show.synopsis}}</p>
+                </div>
+                <div class="drama-info__cast-crew" id="actor-crew">
+                    <div class="cast-crew">
+                        <h2>Actor</h2>
+                        <ul class="drama-info__list">
+                            {% for actor in show.meta_data.people.actors %}
+                            <li>{{actor.name}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="cast-crew">
+                        <h2>Director</h2>
+                        <ul class="drama-info__list">
+                            {% for director in show.meta_data.people.directors %}
+                            <li>{{director.name}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="cast-crew">
+                        <h2>Writer</h2>
+                        <ul class="drama-info__list">
+                            {% for writer in show.meta_data.people.writers %}
+                            <li>{{writer.name}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <ul class="drama-info__genre" id="genre">
+                    {% for genre in show.meta_data.genres %}
+                        <li>{{genre}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        <div class=" drama-watch-share-wrapper">
+            <div class="drama__watchon-wrapper">
+                <div class="watchon">
+                    <div class="watchon__icon"></div>
+                    <div class="watchon__text">Watch on</div>
+                </div>
+                <ul class="drama__watchon__platforms">
+                    {% for platform in show.meta_data.watchPlatforms %}
+                    <li class="platform">
+                        <a href="{{ platform.showLink }}" target="_blank" rel="noopener noreferrer">
+                            <div class="platfom__logo {{ platform.platform | slugify }}"></div>
+                            <div>{{ platform.platform }}</div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <!-- <div class="drama__shareon-wrapper">
+                <div class="shareon">
+                    <div class="shareon__icon"></div>
+                    <div class="shareon__text">Share</div>
+                </div>
+                <ul class="drama__shareon__platforms">
+                    <li class="platform">
+                        <a href="">
+                            <div class="platfom__logo facebook"></div>
+                            <div>Facebook</div>
+                        </a>
+                    </li>
+                    <li class="platform">
+                        <a href="">
+                            <div class="platfom__logo youtube"></div>
+                            <div></div>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+{% if show.tmdb_data %}
+<div class="drama__videos-wrapper">
+    <h2>TRAILER / VIDEOS</h2>
+    <ul  class="drama__videos">
+        {% for video in show.tmdb_data.trailer %}
+            <li>
+                <div class="drama__poster__playbutton" data-yLink="{{video.link}}"></div>
+                <figure>
+                    <img src="http://i.ytimg.com/vi/{{video.link}}/maxresdefault.jpg" class="drama_poster_link" data-yLink="{{video.link}}">
+                    <figcaption>{{video.title}}</figcaption>
+                </figure>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="video-player-wrapper video-player-wrapper--active" id="video">
+        <div class="video-player">
+            <iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-player__close" onclick="closeplayer()" title="close video"></div>
+        </div>
+        
+    </div>
+</div>
+{% else %}
+<div class="drama__videos-wrapper">
+    <h2>TRAILER / VIDEOS</h2>
+    <ul  class="drama__videos">
+        {% for video in show.meta_data.trailer %}
+        <li>
+            <div class="drama__poster__playbutton"></div>
+            <figure>
+                <img src="http://i.ytimg.com/vi/{{video.link}}/maxresdefault.jpg">
+                <figcaption>{{video.title}}</figcaption>
+            </figure>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="video-player-wrapper video-player-wrapper--active" id="video">
+        <div class="video-player">
+            <iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-player__close" onclick="closeplayer()" title="close video"></div>
+        </div> 
+    </div>
+</div>
+{% endif %}

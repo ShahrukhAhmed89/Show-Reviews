@@ -1,0 +1,82 @@
+<!-- <header class="desktop-header">
+	<nav class="navigate">
+		<ul class="nav-menu">
+			<li class="nav-menu__logo"><a href="">MY DRAMA</a></li>
+			<li class="nav-menu__item">
+				<form class="deskptop-input-form">
+					<input type="search" name="search" placeholder="search for drama">
+				</form>
+			</li>
+		</ul>
+		<div class="nav-action">
+			<div class="nav-action__feedback" onclick="openfeedback()">Feedback</div>
+			<ul class="nav-action__social">
+				<li class="facebook"></li>
+				<li class="instagram"></li>
+				<li class="twitter"></li>
+			</ul>
+			{% if user.is_authenticated %}
+			<div class="nav-action__user-signin">
+				Hey {% firstof user.chingu.custom_username user.first_name %}
+				<div class="user-dropdown">
+					<div><a href="{% url 'logout' %}?next={{ request.get_full_path }}">Log Out</a></div>
+				</div>
+			</div>
+			{% else %}
+			<div class="nav-action__user-signin" onclick="opensignin()">SIGN IN</div>
+			{% endif %}
+    	</div>
+	</nav>
+</header> -->
+
+<header class="desktop-header">
+	<a href="/" class="desktop-header__logo">Hey Chingu</a>
+	<form class="desktop__searchbox">
+		<!-- <label for="searchbutton">Search for Korean Dramas</label> -->
+		<input id="searchbutton" type="search" name="" placeholder="search for korean dramas">
+	</form>
+	<div class="desktop__feedback" id="feedback-link" onclick="openfeedback()">Feedback</div>
+	{% if user.is_authenticated %}
+	<div class="nav-action__user-signin">
+		<div class="desktop__signin">
+			<div class="profile-icon">
+				{{ user.username | slice:"1" }}
+			</div>
+		</div>
+		<div class="user-dropdown" >
+			<div><a href="/profile/me">Profile</a></div>
+			<div><a href="{% url 'logout' %}?next=/">Log Out</a></div>
+		</div>
+	</div>
+	{% else %}
+	<div class="nav-action__user-signin" onclick="opensignin()">Login</div>
+	{% endif %}
+</header> 
+
+
+<!-- Mobile Nav Start-->
+<header class="mobile-header">
+	<nav class="mobile-nav">
+		<div class="nav__link"><div id="home-link"><a href=""></a></div></div>
+		<div class="nav__link">
+			<div id="search-link" onclick="opensearch()"></div>
+		</div>
+		<div class="nav__link"><div id="feedback-link" onclick="openfeedback()"></div></div>
+		<div class="nav__link">
+			<ul class="link__social">
+					<li>Connect with us</li>
+					<li><div class="facebook-color"><a href=""></a></div></li>
+					<li><div class="instagram-color"><a href=""></a></div></li>
+					<li><div class="twitter-color"><a href=""></a></div></li>
+			</ul>
+			<div id="option-link" onclick="opensociallink()"></div>
+		</div>
+		<div class="nav__link"><div id="profile-link" onclick="opensignin()"></div></div>
+	</nav>
+	<div class="search-box">
+		<form class="mobile-form">
+			<input id="mobile-search" type="search" name="search" placeholder="Search for your favourite drama, actors.." autofocus>
+		</form>
+		<div class="closeform" onclick="opensearch()"></div>
+	</div>
+</header>

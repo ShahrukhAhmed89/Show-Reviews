@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block meta %}
+<link rel="stylesheet" href="/static/css/home_new.css">
+{% endblock meta %}
+
+
+{% block content %}
+<div class="home-wrapper">
+	<article class="wrapper__trending">
+		{% include 'components/home_components/trend_month.html' %}
+	</article>
+	<div class="wrapper__new-upcoming">
+		<article class="wrapper__recent">
+			{% include 'components/home_components/new_drama.html' %}	
+		</article>
+		<article class="wrapper__upcoming">
+			{% include 'components/home_components/upcoming.html' %}	
+		</article>
+	</div>
+	<article class="wrapper__favourite">
+		{% include 'components/home_components/all_time.html' %}	
+	</article>
+	<article class="wrapper__review">
+		{% include 'components/home_components/top_reviews.html' %}
+	</article>
+</div>
+{% endblock content %}

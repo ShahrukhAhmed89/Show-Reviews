@@ -1,0 +1,349 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+
+
+1 of 211
+(no subject)
+Inbox
+x
+
+shireen taj
+Attachments
+11:11 PM (1 hour ago)
+to me
+
+<div class="profile-wrapper">
+	<div class="profile__img">
+		<img src="image/poster7.jpg">
+	</div>
+	<div class="profile-info">
+		<h1 class="profile__name">Chin Jan-in</h1>
+		<div class="profile-detail">
+			<div class='profile-info__watchlist'>
+				<div class="detail__value">20</div>
+				<div class="detail__name">Watchlist</div>
+			</div>
+			<div class='profile-info__rate'>
+				<div class="detail__value">100</div>
+				<div class="detail__name">Reviwed</div> 
+			</div>
+		</div>
+		<!-- <div class="profile__edit"><button>Edit</button></div> -->
+	</div>
+</div>					
+<div class="review">
+		<h2>MY REVIEW</h2>
+		<div class="drama">
+		<div class="drama__image">
+			<img src="image/poster7.jpg">
+		</div>
+		<div class="drama__detail">
+			<h3 class="drama-name"><a href="">Mystery islands</a></h3>
+			<div class="drama-rating">4.3</div>
+			<div class="drama__review">This is undoubtedly the most popular Korean drama of all time and I really don't know how many are going to agree with me, but this one's a classic.</div>
+		</div>
+	</div>
+	<div class="drama">
+		<div class="drama__image">
+			<img src="image/poster7.jpg">
+		</div>
+		<div class="drama__detail">
+			<h3 class="drama-name">into the blue moon ocean</h3>
+			<div class="drama-rating">4.2</div>
+			<div class="drama__review">This is undoubtedly the most popular Korean drama of all time and I really don't know how many are going to agree with me, but this</div>
+		</div>
+	</div>
+</div>
+Attachments area
+Thanks, I'll check it out.Thanks a lot.Very interesting!
+
+.profile-wrapper{
+	display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
+}
+.profile__img{
+	width: 15%;
+}
+.profile__img img{
+	width: 100%;
+}
+.profile-info{
+	padding-left: 1rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+.profile__name{
+	width: 100%;
+	padding-bottom:0.5rem;
+	margin: 0;
+    font-size: 2rem;
+    color: white;
+}
+.profile-detail{
+	display:-webkit-flex;
+	-webkit-flex-wrap: wrap;
+	-webkit-align-self: flex-start;
+	display:flex;
+	flex-wrap: wrap;
+	align-self: flex-start;
+}
+.profile-info__watchlist{
+	border-right:1px solid gray;
+	padding-right:1rem;
+	text-align: center;
+}
+.detail__value{
+	font-size: 1rem;
+    font-weight: 500;
+}
+.detail__name{
+	font-size: 0.8rem;
+	color:#c2c2db;
+	letter-spacing: 1.1px;
+	font-weight: bold;
+}
+.profile-info__rate{
+	padding-left:1rem;
+	text-align: center;
+}
+.profile__edit button{
+    border: 1px solid gray;
+    padding: 0.5rem 0rem;
+    border-radius: 2px;
+    background: #1a1e2a;
+    width: 100%;
+    font-size: 1rem;
+    font-family: "Roboto Condensed", sans-serif;
+    margin-top:1rem;
+    cursor: pointer;
+    outline:none;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    color: inherit;
+}
+.profile__edit button:hover, .profile__edit button:active{
+	-webkit-box-shadow: 0px 2px 8px 0px #bebebe;
+	box-shadow: 0px 2px 8px 0px #bebebe;
+}	
+.review{
+	display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
+}
+.review h2{
+	width: 100%;
+	color: #e0e9f1;
+	border-bottom: 1px solid #6c6c7f;
+    font-size: 1.2rem;
+    margin: 1% 0.5%;
+    padding-bottom:0.2rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+.drama {
+	display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin: .5rem 0;
+    border: 1px solid #3e3e4f;
+    background: #1a1e2a;
+    font-family: "Roboto", sans-serif;
+    color: #b4bfce;
+}
+.drama__image{
+	width: 30%;
+}
+.drama__image img, .wl_drama__image img{
+	width: 100%;
+	border-radius: 5px;
+}
+.drama__detail{
+	width: 70%;
+	padding-left: 1rem;
+}
+.drama-name {
+	font-size: .95rem;
+	font-weight: 400;
+	color: #e7ced7;
+	margin:0;
+    font-family:"Roboto Condensed", sans-serif;
+}
+.drama__detail > *{
+	margin-bottom:0.5rem;
+}
+.drama__review{
+	font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 1.1px;
+}
+
+
+/* mobile and tablet */
+@media(max-width: 767px){
+	.review h2{
+	    font-size: 1rem;
+    	font-weight: 500;
+	}
+	.profile-wrapper{
+		padding: 2rem 2.5rem 1rem;
+	}
+	.profile__img {
+	    width: 15%;
+	}
+	.profile__name{
+		font-size: 1.5rem;
+		padding-bottom: 0.2rem;
+	}
+	.profile-info__watchlist{
+		padding-right:0.5rem;
+	}
+	.profile-info__rate{
+		padding-left: 0.5rem;
+	}
+	.profile__edit button{
+		padding:0.2rem 0;
+	}
+	.drama{
+		padding: .5rem;
+		margin: .5rem 0.25rem 1rem;
+	}
+	.review{
+		padding:.5rem;
+		padding-bottom:5rem;
+	}
+	.drama__image{
+		width: 15%;
+	}
+	.drama__detail {
+	    width: 75%;
+	}
+	
+}
+
+/* small mobile */
+@media(max-width: 500px){
+	.profile-wrapper{
+		padding: 1rem;
+	}
+	.mv{
+		padding:1rem 0.5rem;
+	}
+	.drama__detail > *{
+		margin-bottom:0.2rem;
+	}
+	.profile__img {
+	    width: 30%;
+	}
+	.review h2{
+	    font-size: .9rem;
+	}
+	.drama-name{
+		 font-size: .85rem;
+	}
+	.drama__detail{
+		padding-left: 0.5rem;
+	}
+	.drama__image{
+		width: 15%;
+	}
+	.drama__detail{
+		width: 85%;
+	}
+}
+
+/* laptop and desktop */
+@media(min-width: 768px){
+
+	.profile-wrapper{
+		padding:1rem 5rem;
+	}
+	.wrapper {
+	    padding: 0 5rem;
+	}
+	.profile__name{
+		padding: 0 0.5rem;
+		margin-bottom: 1rem;
+	}
+	.profile-info > div{
+		width: auto;
+    	padding: 0 1rem;
+	}
+	.detail__value{
+		font-size: 1rem;
+	}
+	.review{
+		padding:1rem 5rem;
+	}
+	.drama{
+		height: auto;
+		width: 48%;
+		margin:1%;
+	}
+	.drama__image{
+		width: 20%;
+	}
+	.drama__detail {
+		width: 80%;
+		-webkit-align-self: flex-start;
+		align-self: flex-start;		
+	}
+	.drama__review{
+		font-size: 0.9rem;
+	}	
+
+}
+
+/*laptop till 1024 */
+@media (min-width: 768px) and (max-width: 1024px){
+	.review{
+		padding:1rem 2rem;
+	}
+	.drama__detail{
+		display: block;
+	}
+
+}</style>
+<div class="profile-wrapper">
+    <!-- <div class="profile__img">
+        <img src="image/poster7.jpg">
+    </div> -->
+    <div class="profile-info">
+        <h1 class="profile__name">{% firstof user.chingu.custom_username user.first_name %}</h1>
+        <div class="profile-detail">
+            <!-- <div class='profile-info__watchlist'>
+                <div class="detail__value">20</div>
+                <div class="detail__name">Watchlist</div>
+            </div>
+            <div class='profile-info__rate'>
+                <div class="detail__value">100</div>
+                <div class="detail__name">Reviwed</div> 
+            </div> -->
+        </div>
+        <!-- <div class="profile__edit"><button>Edit</button></div> -->
+    </div>
+</div>					
+<div class="review">
+    <h2>MY REVIEW</h2>
+    {% if reviews %}
+        {% for review in reviews %}
+        <div class="drama">
+            <div class="drama__image">
+                <img src="{{review.show.image_portrait.url}}">
+            </div>
+            <div class="drama__detail">
+                <h3 class="drama-name"><a href="{{review.show.get_absolute_url}}">{{review.show}}</a></h3>
+                <div class="drama-rating">{{review.rating}}</div>
+                <div class="drama__review">{{review.post}}</div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="review__no_shows">You haven't reviewed a show yet.</p>
+    {% endif %}
+</div>
+
+{% endblock content %}

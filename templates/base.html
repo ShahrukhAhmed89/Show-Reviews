@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>New Drama Page</title>
+	<!-- <link rel="stylesheet" type="text/css" href="/static/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/mode-day.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/css/theme_base.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/static/mode-day.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:100,300,400,700|Roboto:100,100i,300,400,500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+	<!-- <link rel="icon" href="/space.jpg" type="image/gif" sizes="16x16"> -->
+	<link rel="shortcut icon" href="/media/space.jpg">
+	{% block meta %}
+	{% endblock meta %}
+</head>
+<body>
+
+
+{% include "components/header.html" %}
+
+{% include "components/feedback.html" %}
+
+{% include "components/signin.html" %}
+
+{% block content %}
+{% endblock content %}
+
+
+</body>
+<script src="/static/js/index2.js">
+</script>
+</html>	

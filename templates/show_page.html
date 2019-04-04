@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<link rel="stylesheet" type="text/css" href="/static/css/theme2.css">
+{% endblock meta %}
+
+
+{% block content %}
+<div class="wrapper">
+	{% include "components/drama_display.html" %}
+	<div class="section-rev-rec">
+		<div class="review-wrapper">
+			{% include 'components/user_review.html' %}
+			{% include 'components/review_list.html' %}
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+
+
+
+<!-- 
+<div class="review-ad-recom">
+	<div class="review">
+		{% include 'components/user_review.html' %}
+		{% include "components/review_list.html" %}
+	</div>
+	<aside class="ad-recom">
+		<div class="ads">
+			<img src=>
+		</div>
+		<article class="wrapper__favourite">
+			<h2>RECOMMENDATION</h2>
+			<div class="scroll">
+				<ul class="favourite">
+					<li class="favourite__drama">
+						<a href="">
+							<div class="drama__poster">
+								<img src="">
+								<div class="drama__name">Boys Over Flower</div>
+							</div>
+						</a>	
+						<div class="drama__rating">4.3</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+	</aside> 
+</div> -->

@@ -1,0 +1,18 @@
+<div class="signin-wrapper hide" id="signin">
+	<div class="signin-container">
+		<h2>Sign in with:</h2>
+		<div class="closebox" onclick="closesignin()">close</div>
+		<div id="signin-gmail" class="signin-each">
+			<div class="signin-icon gmail-color"></div>
+			<a href="{% url "social:begin" "google-oauth2" %}"><div class="signin-text">Gmail</div></a>
+		</div>
+		<div id="signin-facebook" class="signin-each">
+			<div class="signin-icon facebook-color"></div>
+			<div class="signin-text">Facebook</div>
+		</div>
+		<div id="signin-twitter" class="signin-each">
+			<div class="signin-icon twitter-color"></div>
+			<div class="signin-text">Twitter</div>
+		</div>
+	</div>
+</div> 

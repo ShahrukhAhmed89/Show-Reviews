@@ -1,0 +1,57 @@
+<div class="review__all">
+    <div class="review__all__header">
+        <h2>REVIEWS</h2>
+        <!-- <div class="review__filter">
+            <select>
+                <option>New</option>
+                <option>Popular</option>
+            </select>
+        </div> -->
+    </div>
+    {% if reviews %}
+        <div id="js-review__target">
+            {% for review in reviews %}
+            <div class="review__other-user">
+                <div class="user__profile">
+                    <div class="profile-icon">
+                        {{ review.user.user.username | slice:"1" }}
+                    </div>
+                    <!-- {% if user.chingu.avatar %}
+                        <a href=""><img src="{% firstof user.chingu.avatar.url  %}"></a>
+                    {% else %}
+                        <a href=""><img src="static/girl.png"></a>
+                    {% endif %} -->
+                </div>
+                <div class="other-user__section-right">
+                    <span class="user-name"><a href="">{{review.user}} </a></span>
+                    <span class="drama-rating"><!-- {{review.rating}} -->4.3</span>
+                    <div class="review-text">
+                        {{ review.post | linebreaks }}
+                    </div>
+                    <div class="review-btns">
+                        <div class="report-btn">
+                        </div>
+                        <div class="review-like">
+                            {% if request.user.chingu.id in review.user_likes %}
+                            <div class="like__btn like__btn--active" data-review-id={{review.id}}></div>
+                            {% else %}
+                            <div class="like__btn" data-review-id={{review.id}}></div>
+                            {% endif %}
+                            <div class="like__count"> {{review.user_likes | length }} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if reviews|length > 15 %}
+        <div class="more-review-button" onclick="loadMoreReviews({{show.id}})">
+            <button id="review_paginator">more reviews</button>	
+        </div>
+        {% endif %}
+    {% else %}
+    <div class="review__other-user" id="js-review__target">
+        <div class="review-text">No user reviews added yet...</div>
+    </div>
+    {% endif %}
+</div>

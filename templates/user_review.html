@@ -1,0 +1,69 @@
+<div class="log-user-review">
+    <div class="user__profile">
+        {% if user_review.user.avatar %}
+            <a href=""><img src="{{user_review.user.avatar.url}}"></a>
+        {% endif %}
+        <span class="my__name"><a href="">Me</a></span>
+    </div>
+    <div class="user__form">
+        <div>
+            <span class="drama__rating">{{ user_review.rating }}</span>
+            <div class="my__review-text" id="review_editor" >
+                    {{ user_review.post | linebreaks }}
+            </div>
+            <div class="my-review-actions">
+                <div class="my-review__like">
+                    <div class="mylike__button"></div>
+                    <div class="like__count">200</div>
+                </div>
+                <button class="edit-button" id="btn_editor">
+                    Edit
+                </button> 
+                <button class="edit-button hide_buttons" id="btn_save"  onclick="review_update({{user_review.id}})">
+                    Save
+                </button>
+                <button class="edit-button" id="btn_delete">Delete</button>
+            </div>
+        </div>
+        <form  class="hide"	id="user_review_form">
+            <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label class="full-star" for="star5" title="" style="left:124px"></label>
+                
+                <input type="radio" id="star4half-star" name="rating" value="4.5" />
+                <label class="half-star" for="star4half-star" title="" style="left:124px"></label>
+                
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label class="full-star" for="star4" title="" style="left:93px"></label>
+                
+                <input type="radio" id="star3half-star" name="rating" value="3.5" />
+                <label class="half-star" for="star3half-star" title="" style="left:93px"></label>
+                
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label class="full-star" for="star3" title="" style="left:62px"></label>
+                
+                <input type="radio" id="star2half-star" name="rating" value="2.5" />
+                <label class="half-star" for="star2half-star" title="" style="left:62px"></label>
+                
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label class="full-star" for="star2" title="" style="left:31px"></label>
+                
+                <input type="radio" id="star1half-star" name="rating" value="1.5" />
+                <label class="half-star" for="star1half-star" title="" style="left:31px"></label>
+            
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label class="full-star" for="star1" title="" style="left:0"></label>
+                
+                <input type="radio" id="starhalf-star" name="rating" value=".5" />
+                <label class="half-star" for="starhalf-star" title="" style="left:0"></label>
+            </fieldset>
+            <textarea style="overflow:hidden;resize: none"  type="text" id="new_review_text" placeholder="Write your review(optional)" ></textarea>
+            </textarea>
+            <input type="submit" 
+                name="new-review" 
+                data-show-id="{{show.id}}"
+                id="submit_review"
+            >	
+        </form>
+    </div>
+</div>

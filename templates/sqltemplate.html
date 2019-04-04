@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{{show.title}}
+<br>
+{{show.synopsis}}
+<br>
+<br>
+<div><img height='200' width="200" src={{show.image_portrait.url}}></div>
+<br>
+<div><img height='200' width="200" src={{show.image_landscape.url}}></div>
+<br>
+<div>
+    <ul>
+        {% for actor in show.actor.all %}
+        <li>{{actor.name}}</li>
+        {% endfor %}
+    </ul>
+</div>
+<br>
+<div>
+    <ul>
+        {% for director in show.director.all %}
+        <li>{{director.name}}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+ {% endblock content %}
